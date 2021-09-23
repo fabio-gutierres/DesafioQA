@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "0cf419a7-ce4f-4cd1-85de-d36fc9dec2e8",
+		"name": "Desafio 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "desafio2.1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Title\", function () {pm.expect(pm.response.text()).to.include(\"The Social Network\"); });\r",
+							"pm.test(\"Year\", function () {pm.expect(pm.response.text()).to.include(\"2010\"); });\r",
+							"pm.test(\"Language\", function () {pm.expect(pm.response.text()).to.include(\"English, French\"); });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://www.omdbapi.com/?i={{ID_DO_FILME}}&apikey={{API_KEY}}",
+					"protocol": "http",
+					"host": [
+						"www",
+						"omdbapi",
+						"com"
+					],
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "i",
+							"value": "{{ID_DO_FILME}}"
+						},
+						{
+							"key": "apikey",
+							"value": "{{API_KEY}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "desafio2.2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response\", function () {pm.expect(pm.response.text()).to.include(\"False\"); });\r",
+							"pm.test(\"Error\", function () {pm.expect(pm.response.text()).to.include(\"Incorrect IMDb ID.\"); });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://www.omdbapi.com/?i={{ID_FILME_INEXISTENTE}}&apikey={{API_KEY}}",
+					"protocol": "http",
+					"host": [
+						"www",
+						"omdbapi",
+						"com"
+					],
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "i",
+							"value": "{{ID_FILME_INEXISTENTE}}"
+						},
+						{
+							"key": "apikey",
+							"value": "{{API_KEY}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
